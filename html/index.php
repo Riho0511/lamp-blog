@@ -5,13 +5,16 @@
 <head>
     <title>PHP勉強</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./public/css/style.css">
 </head>
 <body>
     <!-- ヘッダー -->
-    <?php include('./layouts/header/index.php'); ?>
+    <?php include('./resources/layouts/header/index.php'); ?>
+
+    <!-- コンテンツ -->
+    <?php include('./resources/page/login.php'); ?>
 
     <!-- フッター -->
-    <?php include('./layouts/footer/footer.php'); ?>
+    <?php include('./resources/layouts/footer/footer.php'); ?>
 </body>
 </html>

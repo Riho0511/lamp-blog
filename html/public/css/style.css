@@ -17,3 +17,18 @@ header li a {
 footer {
     text-align: center;
 }
+
+
+.contents {
+    width: 90%;
+    margin: 30px auto;
+}
+
+.login {
+    width: 60%;
+    margin: 0 auto;
+    background-color: rgb(233, 250, 252);
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
