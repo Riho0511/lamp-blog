@@ -1,4 +1,7 @@
-<?php include('../app/pdo.php'); ?>
+<?php 
+
+require '../app/lib/pdo.php';
+?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -8,13 +11,6 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <!-- ヘッダー -->
-    <?php include('../resources/layouts/header/index.php'); ?>
-
-    <!-- コンテンツ -->
-    <?php include('../resources/page/login.php'); ?>
-
-    <!-- フッター -->
-    <?php include('../resources/layouts/footer/footer.php'); ?>
+    <?php require '../routes/web.php'; ?>
 </body>
 </html>
