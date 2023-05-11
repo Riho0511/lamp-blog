@@ -12,7 +12,7 @@ class PostController {
     }
 
     // 詳細表示
-    public function show() {
+    public function show($id) {
         return View::view('show');
     }
 
@@ -27,17 +27,17 @@ class PostController {
     }
 
     // 編集
-    public function edit() {
+    public function edit($id) {
         return View::view('edit');
     }
 
     // 更新
-    public function update() {
+    public function update($id) {
         echo '更新';
     }
 
     // 削除
-    public function destroy() {
+    public function destroy($id) {
         echo '削除';
     }
 }
