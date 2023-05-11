@@ -1,8 +1,3 @@
-<?php 
-
-require '../app/lib/pdo.php';
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
