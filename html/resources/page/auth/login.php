@@ -1,5 +1,3 @@
-
-
 <div class="contents">
     <div class="login">
         <h1>Sign In</h1>
