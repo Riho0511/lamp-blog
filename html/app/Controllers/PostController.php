@@ -17,6 +17,9 @@ class PostController {
 
     // 詳細表示
     public function show($id) {
+        $post = Post::get_post($id);
+        $GLOBALS['data'] = $post;
+
         return View::view('show');
     }
 
