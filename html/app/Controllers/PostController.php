@@ -3,11 +3,15 @@
 namespace App\Controllers;
 
 use App\lib\View;
+use App\Models\Post;
 
 class PostController {
 
     // 一覧表示
     public function index() {
+        $posts = Post::get_posts();
+        $GLOBALS['data'] = $posts;
+
         return View::view('index');
     }
 

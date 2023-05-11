@@ -1,8 +1,6 @@
 <?php
 
-use App\Models\Post;
-
-$posts = Post::get_posts();
+$posts = $GLOBALS['data'];
 ?>
 
 <div class="contents">
