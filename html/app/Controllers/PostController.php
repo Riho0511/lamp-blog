@@ -11,17 +11,13 @@ class PostController {
 
     // 一覧表示
     public function index() {
-        $posts = Post::get_posts();
-        $GLOBALS['data'] = $posts;
-
+        Post::get_posts();
         return View::view('index');
     }
 
     // 詳細表示
     public function show($id) {
-        $post = Post::get_post($id);
-        $GLOBALS['data'] = $post;
-
+        Post::get_post($id);
         return View::view('show');
     }
 
@@ -40,9 +36,7 @@ class PostController {
 
     // 編集
     public function edit($id) {
-        $post = Post::get_post($id);
-        $GLOBALS['data'] = $post;
-
+        Post::get_post($id);
         return View::view('edit');
     }
 

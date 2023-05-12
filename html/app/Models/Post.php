@@ -1,65 +1,39 @@
 <?php
 
-
 namespace App\Models;
 
-require __DIR__ . '../../../config/pdo.php';
-
-class Post {
+class Post extends Model {
 
     // 投稿の一覧取得
     public static function get_posts() {
         $query = 'SELECT * FROM posts';
-
-        $result = db()->query($query);
-
-        if ($result === false) echo '読み取り失敗';
-
-        return $result->fetchAll(\PDO::FETCH_ASSOC);
+        $posts = self::db($query)->fetchAll(\PDO::FETCH_ASSOC);
+        $GLOBALS['data'] = $posts;
     }
 
     // 投稿の詳細取得
     public static function get_post($id) {
-        $query = "SELECT * FROM posts WHERE id ={$id}";
-
-        $result = db()->query($query);
-
-        if ($result === false) echo '読み取り失敗';
-
-        return $result->fetchAll(\PDO::FETCH_ASSOC)[0];
+        $query = "SELECT * FROM posts WHERE id={$id}";
+        $post = self::db($query)->fetch(\PDO::FETCH_ASSOC);
+        $GLOBALS['data'] = $post;
     }
 
     // 投稿の保存
     public static function store() {
-        $title = $_POST['title'];
-        $body = $_POST['body'];
-        $user_id = 1;
-
-        $query = "INSERT INTO posts (title, body, user_id) VALUES ('{$title}','{$body}',{$user_id})";
-        $result = db()->query($query);
-
-        return;
+        $query = "INSERT INTO posts (title, body, user_id) VALUES ('{$_POST['title']}','{$_POST['body']}',1)";
+        $result = self::db($query);
     }
 
     // 投稿の更新
     public static function update($id) {
-        $title = $_POST['title'];
-        $body = $_POST['body'];
-        
-        $query = "UPDATE posts SET title = :title, body = :body WHERE id = :id";
-        $stmt = db()->prepare($query);
-        $stmt->execute([':title' => $title, ':body' => $body, ':id' => $id]);
-
-        return;
+        $query = "UPDATE posts SET title = '{$_POST['title']}', body = '{$_POST['body']}' WHERE id = {$id}";
+        $result = self::db($query);
     }
 
     // 投稿の削除
     public static function destroy($id) {
-        $query = "DELETE from posts WHERE id = :id";
-        $stmt = db()->prepare($query);
-        $stmt->execute([':id' => $id]);
-
-        return;
+        $query = "DELETE from posts WHERE id = {$id}";
+        $result = self::db($query);
     }
 }
 ?>
