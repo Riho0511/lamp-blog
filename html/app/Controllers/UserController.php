@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\lib\View;
+use App\Requests\Request;
+use App\Models\User;
 
 class UserController extends Controller {
 
@@ -13,7 +15,8 @@ class UserController extends Controller {
 
     // ログイン処理
     public function login() {
-        echo 'ログイン';
+        Request::validate('/login');
+        User::login();
     }
 
     // ログアウト

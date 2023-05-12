@@ -4,9 +4,9 @@ namespace App\Requests;
 
 use App\lib\Redirect;
 
-define('ATTRIBUTES', ['title' => 'タイトル', 'body' => '内容']);
+class Request {
 
-class PostRequest {
+    private const RULE = ['title' => 'タイトル', 'body' => '内容', 'email' => 'Email', 'password' => 'パスワード'];
 
     // POSTメソッド＆ステータスコード200のリクエストかチェック
     public static function request_check() {
@@ -27,12 +27,11 @@ class PostRequest {
         foreach ($_POST as $key => $value) {
             if (mb_strlen($value) === 0) {
                 $validate_error = true;
-                array_push($errors, ATTRIBUTES[$key] . 'を入力してください');
+                array_push($errors, self::RULE[$key] . 'を入力してください');
             }
         }
         
         // エラーメッセージのセット
-        session_start();
         $_SESSION['errors'] = empty($errors) ? [] : $errors;
 
         if ($validate_error) Redirect::to($uri);

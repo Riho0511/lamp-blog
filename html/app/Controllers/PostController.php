@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\lib\View;
 use App\lib\Redirect;
 use App\Models\Post;
-use App\Requests\PostRequest;
+use App\Requests\Request;
 
 class PostController extends Controller {
 
@@ -28,7 +28,7 @@ class PostController extends Controller {
 
     // 保存
     public function store() {
-        PostRequest::validate('/posts/create');
+        Request::validate('/posts/create');
         Post::store();
 
         Redirect::to('/');
@@ -42,7 +42,7 @@ class PostController extends Controller {
 
     // 更新
     public function update($id) {
-        PostRequest::validate("/posts/{$id}/edit");
+        Request::validate("/posts/{$id}/edit");
         Post::update($id);
 
         Redirect::to('/');

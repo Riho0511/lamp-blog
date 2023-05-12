@@ -1,3 +1,8 @@
+<?php
+
+$errors = array_key_exists('errors', $_SESSION) ? $_SESSION['errors'] : [];
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -20,6 +25,11 @@
                 </div>
                 <button>送信</button>
             </form>
+            <?php
+                foreach ($errors as $error) {
+                    echo '<p class="error">' . $error . '</p>';
+                }
+            ?>
             <p><a href="page/register.php">アカウントをお持ちでない方はこちら</a></p>
         </div>
     </div>
