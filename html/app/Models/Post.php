@@ -56,5 +56,14 @@ class Post {
 
         return;
     }
+
+    // 投稿の削除
+    public static function destroy($id) {
+        $query = "DELETE from posts WHERE id = :id";
+        $stmt = db()->prepare($query);
+        $stmt->execute([':id' => $id]);
+
+        return;
+    }
 }
 ?>

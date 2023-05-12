@@ -58,7 +58,9 @@ class PostController {
 
     // 削除
     public function destroy($id) {
-        echo '削除';
+        Post::destroy($id);
+
+        Redirect::to('/');
     }
 }
 ?>
