@@ -41,12 +41,19 @@ class PostController {
 
     // 編集
     public function edit($id) {
+        $post = Post::get_post($id);
+        $GLOBALS['data'] = $post;
+
         return View::view('edit');
     }
 
     // 更新
     public function update($id) {
-        echo '更新';
+        if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST' || PostRequest::validate()) Redirect::to("/posts/{$id}/edit");
+
+        Post::update($id);
+
+        Redirect::to('/');
     }
 
     // 削除

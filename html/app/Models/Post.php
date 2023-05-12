@@ -44,5 +44,17 @@ class Post {
 
         return;
     }
+
+    // 投稿の更新
+    public static function update($id) {
+        $title = $_POST['title'];
+        $body = $_POST['body'];
+        
+        $query = "UPDATE posts SET title = :title, body = :body WHERE id = :id";
+        $stmt = db()->prepare($query);
+        $stmt->execute([':title' => $title, ':body' => $body, ':id' => $id]);
+
+        return;
+    }
 }
 ?>

@@ -13,6 +13,7 @@ $post = $GLOBALS['data'];
 <body>
     <div class="contents">
         <h1>ブログ詳細</h1>
+        <a href=<?php echo "/posts/" . $post['id'] . "/edit"; ?>>編集</a>
         <div class="post">
             <h2><?php echo $post['title'] ?></h2>
             <p><?php echo $post['body'] ?></p>
