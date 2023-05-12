@@ -3,12 +3,10 @@
 namespace App\Controllers;
 
 use App\lib\View;
+use App\Requests\Request;
+use App\Models\User;
 
-class UserController {
-
-    public function __construct() {
-        $view = new View();
-    }
+class UserController extends Controller {
 
     // ログイン画面表示
     public function view_login() {
@@ -17,7 +15,8 @@ class UserController {
 
     // ログイン処理
     public function login() {
-        echo 'ログイン';
+        Request::validate('/login');
+        User::login();
     }
 
     // ログアウト

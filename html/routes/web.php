@@ -20,6 +20,7 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
+$rootpath = __DIR__ . '/../resources/page/';
 
 switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::FOUND:  // 設定したルーティングの場合
@@ -31,10 +32,9 @@ switch ($routeInfo[0]) {
         echo call_user_func_array([$class, $method], $vars);
         break;
     case FastRoute\Dispatcher::NOT_FOUND:  // 設定したルーティングでない場合
-        echo "ページが見つかりませんでした。\n";
+        require $rootpath . 'notfound.php';
         break;
     case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:  // HTTPリクエストが間違っている場合
-        $allowedMethods = $routeInfo[1];
         echo "許可されないHTTPリクエストです。\n";
         break;
     default:

@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 $errors = array_key_exists('errors', $_SESSION) ? $_SESSION['errors'] : [];
 ?>
 

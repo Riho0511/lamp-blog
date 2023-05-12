@@ -5,23 +5,19 @@ namespace App\Controllers;
 use App\lib\View;
 use App\lib\Redirect;
 use App\Models\Post;
-use App\Requests\PostRequest;
+use App\Requests\Request;
 
-class PostController {
+class PostController extends Controller {
 
     // 一覧表示
     public function index() {
-        $posts = Post::get_posts();
-        $GLOBALS['data'] = $posts;
-
+        Post::get_posts();
         return View::view('index');
     }
 
     // 詳細表示
     public function show($id) {
-        $post = Post::get_post($id);
-        $GLOBALS['data'] = $post;
-
+        Post::get_post($id);
         return View::view('show');
     }
 
@@ -32,8 +28,7 @@ class PostController {
 
     // 保存
     public function store() {
-        if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST' || PostRequest::validate()) Redirect::to('/posts/create');
-
+        Request::validate('/posts/create');
         Post::store();
 
         Redirect::to('/');
@@ -41,16 +36,13 @@ class PostController {
 
     // 編集
     public function edit($id) {
-        $post = Post::get_post($id);
-        $GLOBALS['data'] = $post;
-
+        Post::get_post($id);
         return View::view('edit');
     }
 
     // 更新
     public function update($id) {
-        if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST' || PostRequest::validate()) Redirect::to("/posts/{$id}/edit");
-
+        Request::validate("/posts/{$id}/edit");
         Post::update($id);
 
         Redirect::to('/');
