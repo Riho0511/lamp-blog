@@ -2,6 +2,7 @@ docker/db/data
 docker/db/script
 
 html/vendor
+html/config/config.php
 
 www/
 
