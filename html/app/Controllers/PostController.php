@@ -7,7 +7,7 @@ use App\lib\Redirect;
 use App\Models\Post;
 use App\Requests\PostRequest;
 
-class PostController {
+class PostController extends Controller {
 
     // 一覧表示
     public function index() {

@@ -4,11 +4,7 @@ namespace App\Controllers;
 
 use App\lib\View;
 
-class UserController {
-
-    public function __construct() {
-        $view = new View();
-    }
+class UserController extends Controller {
 
     // ログイン画面表示
     public function view_login() {
