@@ -32,8 +32,7 @@ class PostController {
 
     // 保存
     public function store() {
-        if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST' || PostRequest::validate()) Redirect::to('/posts/create');
-
+        PostRequest::validate('/posts/create');
         Post::store();
 
         Redirect::to('/');
@@ -49,8 +48,7 @@ class PostController {
 
     // 更新
     public function update($id) {
-        if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST' || PostRequest::validate()) Redirect::to("/posts/{$id}/edit");
-
+        PostRequest::validate("/posts/{$id}/edit");
         Post::update($id);
 
         Redirect::to('/');

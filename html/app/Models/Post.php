@@ -37,10 +37,6 @@ class Post {
 
         $query = "INSERT INTO posts (title, body, user_id) VALUES ('{$title}','{$body}',{$user_id})";
         $result = db()->query($query);
-        if(!db()->exec($query)){
-            $error = db()->errorInfo();
-            die($error[2] . '. sql : ' . $query);
-        }
 
         return;
     }
