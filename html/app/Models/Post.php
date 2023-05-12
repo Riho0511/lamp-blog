@@ -20,13 +20,29 @@ class Post {
 
     // 投稿の詳細取得
     public static function get_post($id) {
-        $query = 'SELECT * FROM posts WHERE id =' . $id;
+        $query = "SELECT * FROM posts WHERE id ={$id}";
 
         $result = db()->query($query);
 
         if ($result === false) echo '読み取り失敗';
 
         return $result->fetchAll(\PDO::FETCH_ASSOC)[0];
+    }
+
+    // 投稿の保存
+    public static function store() {
+        $title = $_POST['title'];
+        $body = $_POST['body'];
+        $user_id = 1;
+
+        $query = "INSERT INTO posts (title, body, user_id) VALUES ('{$title}','{$body}',{$user_id})";
+        $result = db()->query($query);
+        if(!db()->exec($query)){
+            $error = db()->errorInfo();
+            die($error[2] . '. sql : ' . $query);
+        }
+
+        return;
     }
 }
 ?>

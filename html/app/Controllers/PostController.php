@@ -3,7 +3,9 @@
 namespace App\Controllers;
 
 use App\lib\View;
+use App\lib\Redirect;
 use App\Models\Post;
+use App\Requests\PostRequest;
 
 class PostController {
 
@@ -30,7 +32,11 @@ class PostController {
 
     // 保存
     public function store() {
-        echo '保存';
+        if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST' || PostRequest::validate()) Redirect::to('/posts/create');
+
+        Post::store();
+
+        Redirect::to('/');
     }
 
     // 編集
